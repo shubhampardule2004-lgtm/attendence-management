@@ -9,7 +9,9 @@ const getDefaultApiUrl = () => {
     return 'http://localhost:5000/api';
   }
 
-  return `http://${hostname}:5000/api`;
+  // In production the frontend and backend share one Vercel domain. The
+  // root-level rewrite forwards /api/* requests to the backend service.
+  return '/api';
 };
 
 const api = axios.create({
